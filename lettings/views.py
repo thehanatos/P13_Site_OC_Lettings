@@ -8,7 +8,7 @@ Provides views to display all lettings and individual letting details.
 """
 
 
-def lettings_index(request):
+def index(request):
     """
     Display a list of all lettings.
 
