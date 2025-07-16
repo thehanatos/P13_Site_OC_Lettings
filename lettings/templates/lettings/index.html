@@ -21,6 +21,8 @@
                     {% for letting in lettings_list %}
                         <li class="list-group-item">
                             <a href="{% url 'lettings:letting' letting_id=letting.id %}">{{ letting.title }}</a>
+                            <br />
+                            <small class="text-muted">{{ letting.address.street }}</small>
                         </li>
                     {% endfor %}
                 </ul>

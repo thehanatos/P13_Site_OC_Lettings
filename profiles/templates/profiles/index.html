@@ -19,6 +19,8 @@
                     {% for profile in profiles_list %}
                         <li class="list-group-item">
                             <a href="{% url 'profiles:profile' username=profile.user.username %}">{{ profile.user.username }}</a>
+                            <br />
+                            <small class="text-muted">{{ profile.favorite_city }}</small>
                         </li>
                     {% endfor %}
                 </ul>
