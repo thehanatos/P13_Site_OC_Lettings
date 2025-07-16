@@ -8,6 +8,7 @@ urlpatterns = [
     path('lettings/', include('lettings.urls', namespace='lettings')),
     path('profiles/', include('profiles.urls', namespace='profiles')),
     path('admin/', admin.site.urls),
+    path('sentry-debug/', views.trigger_error),
 ]
 
 handler404 = 'oc_lettings_site.views.custom_404'

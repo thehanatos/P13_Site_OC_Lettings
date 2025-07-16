@@ -1,4 +1,8 @@
 from django.shortcuts import render
+import logging
+
+
+logger = logging.getLogger(__name__)
 
 
 def index(request):
@@ -19,4 +23,5 @@ def custom_500(request):
     """
     Custom view for handling 500 errors.
     """
+    logger.critical("Erreur serveur interne (500)")
     return render(request, '500.html', status=500)

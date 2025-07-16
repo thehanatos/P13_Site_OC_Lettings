@@ -1,5 +1,9 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Letting
+import logging
+
+logger = logging.getLogger(__name__)
+
 
 """
 Views for the lettings application.
@@ -18,6 +22,7 @@ def index(request):
     Returns:
         HttpResponse: Rendered HTML page showing all lettings.
     """
+    logger.info("Chargement de la page index des lettings.")
     lettings_list = Letting.objects.all()
     context = {'lettings_list': lettings_list}
     return render(request, 'lettings/index.html', context)
@@ -34,7 +39,12 @@ def letting(request, letting_id):
     Returns:
         HttpResponse: Rendered HTML page for the specific letting.
     """
-    letting = get_object_or_404(Letting, id=letting_id)
+    try:
+        letting = get_object_or_404(Letting, id=letting_id)
+        logger.info(f"Affichage du letting : {letting.title}")
+    except Exception as e:
+        logger.error(f"Erreur lors de la récupération du letting ID {letting_id} : {e}")
+        raise
     context = {
         'title': letting.title,
         'address': letting.address,

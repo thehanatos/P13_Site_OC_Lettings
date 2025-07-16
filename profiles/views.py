@@ -1,11 +1,14 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Profile
+import logging
 
 """
 Views for the profiles application.
 
 Provides views to display all profiles and individual profile details.
 """
+
+logger = logging.getLogger(__name__)
 
 
 def index(request):
@@ -18,6 +21,7 @@ def index(request):
     Returns:
         HttpResponse: Rendered HTML page showing all profiles.
     """
+    logger.info("Chargement de la page index des profils.")
     profiles_list = Profile.objects.all()
     context = {'profiles_list': profiles_list}
     return render(request, 'profiles/index.html', context)
@@ -34,6 +38,11 @@ def profile(request, username):
     Returns:
         HttpResponse: Rendered HTML page for the specific profile.
     """
-    profile = get_object_or_404(Profile, user__username=username)
+    try:
+        profile = get_object_or_404(Profile, user__username=username)
+        logger.info(f"Affichage du profil : {profile.user.username}")
+    except Exception as e:
+        logger.error(f"Erreur lors de la récupération du profil {username} : {e}")
+        raise
     context = {'profile': profile}
     return render(request, 'profiles/profile.html', context)
