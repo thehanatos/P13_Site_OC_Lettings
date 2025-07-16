@@ -33,6 +33,10 @@ class Address(models.Model):
         """
         return f'{self.number} {self.street}'
 
+    class Meta:
+        verbose_name = "adresse"
+        verbose_name_plural = "adresses"
+
 
 class Letting(models.Model):
     """
