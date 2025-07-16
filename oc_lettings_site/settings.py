@@ -29,7 +29,7 @@ sentry_sdk.init(
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False  # add false to display custom 404.html and 500.html
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'p13-site-oc-lettings.onrender.com',]
 
 # Application definition
 
