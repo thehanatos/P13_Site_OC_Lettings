@@ -16,13 +16,19 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 
 # SECRET_KEY = env("SECRET_KEY")
-SENTRY_DSN = env("SENTRY_DSN")
+# SENTRY_DSN = env("SENTRY_DSN")
 
-try:
-    SECRET_KEY = env("SECRET_KEY")
-except django.core.exceptions.ImproperlyConfigured:
-    # fallback pendant le build Docker
-    SECRET_KEY = 'build-temporary-secret-key'
+
+def env_or_default(varname, default=""):
+    try:
+        return env(varname)
+    except django.core.exceptions.ImproperlyConfigured:
+        return default
+
+
+SECRET_KEY = env_or_default("SECRET_KEY", "build-temporary-secret-key")
+SENTRY_DSN = env_or_default("SENTRY_DSN", "temporary-dsn")
+
 
 sentry_sdk.init(
     dsn=SENTRY_DSN,
