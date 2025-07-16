@@ -27,15 +27,16 @@ def env_or_default(varname, default=""):
 
 
 SECRET_KEY = env_or_default("SECRET_KEY", "build-temporary-secret-key")
-SENTRY_DSN = env_or_default("SENTRY_DSN", "temporary-dsn")
+SENTRY_DSN = env_or_default("SENTRY_DSN", "")
 
+if SENTRY_DSN:
+    sentry_sdk.init(
+        dsn=SENTRY_DSN,
+        integrations=[DjangoIntegration()],
+        send_default_pii=True,
+        traces_sample_rate=1.0,
+    )
 
-sentry_sdk.init(
-    dsn=SENTRY_DSN,
-    integrations=[DjangoIntegration()],
-    send_default_pii=True,
-    traces_sample_rate=1.0,
-)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
