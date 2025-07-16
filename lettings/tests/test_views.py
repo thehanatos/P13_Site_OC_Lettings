@@ -4,16 +4,20 @@ from lettings.models import Letting, Address
 
 
 @pytest.mark.django_db
-def test_index_view(client):
+def test_letting_detail_view(client):
     address = Address.objects.create(
-        number=10,
-        street="Main St",
-        city="Paris",
+        number=42,
+        street="Rue de Test",
+        city="Bordeaux",
         state="FR",
-        zip_code=75000,
+        zip_code=33000,
         country_iso_code="FRA"
     )
-    Letting.objects.create(title="Super Appartement", address=address)
-    response = client.get(reverse('lettings:index'))
+    letting = Letting.objects.create(title="Appartement Bordeaux", address=address)
+
+    url = reverse('lettings:letting', kwargs={'letting_id': letting.id})
+    response = client.get(url)
+
     assert response.status_code == 200
-    assert b"Super Appartement" in response.content
+    assert letting.title.encode() in response.content
+    assert letting.address.street.encode() in response.content
