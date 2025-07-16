@@ -3,6 +3,8 @@ from pathlib import Path
 import sentry_sdk
 from sentry_sdk.integrations.django import DjangoIntegration
 import environ
+import django.core.exceptions
+
 
 env = environ.Env(
     DEBUG=(bool, False)
@@ -13,8 +15,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 
-SECRET_KEY = env("SECRET_KEY")
+# SECRET_KEY = env("SECRET_KEY")
 SENTRY_DSN = env("SENTRY_DSN")
+
+try:
+    SECRET_KEY = env("SECRET_KEY")
+except django.core.exceptions.ImproperlyConfigured:
+    # fallback pendant le build Docker
+    SECRET_KEY = 'build-temporary-secret-key'
 
 sentry_sdk.init(
     dsn=SENTRY_DSN,
