@@ -198,6 +198,11 @@ Un workflow CI/CD (`.github/workflows/main.yml`) s’assure que :
 
 ---
 
+## 📚 Documentation Complète
+
+Pour une documentation détaillée incluant l’architecture, le guide d’installation, les technologies utilisées :
+[Consultez la documentation sur Read the Docs ](https://p13-site-oc-lettings.readthedocs.io/fr/latest/index.html)
+
 ## 📎 Liens utiles
 
 - Site en production (Render) : `https://p13-site-oc-lettings.onrender.com/`
