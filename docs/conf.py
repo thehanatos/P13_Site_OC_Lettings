@@ -32,8 +32,6 @@ html_title = "Orange County Lettings"
 
 html_theme = "furo"
 html_theme_options = {
-    # "light_logo": "your_logo.png",
-    # "dark_logo": "your_logo.png",
     "sidebar_hide_name": False,
     "navigation_with_keys": True,
 }
