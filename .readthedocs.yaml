@@ -15,6 +15,4 @@ build:
 # Installation des dépendances pour construire la doc
 python:
   install:
-    - method: pip
-      path: .
     - requirements: requirements.txt
