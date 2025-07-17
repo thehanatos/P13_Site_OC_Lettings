@@ -1,0 +1,20 @@
+# .readthedocs.yaml
+
+version: 2
+
+# Où se trouvent les fichiers de documentation (Sphinx)
+sphinx:
+  configuration: docs/conf.py
+
+# Environnement de build
+build:
+  os: ubuntu-22.04
+  tools:
+    python: "3.10"
+
+# Installation des dépendances pour construire la doc
+python:
+  install:
+    - method: pip
+      path: .
+    - requirements: requirements.txt
