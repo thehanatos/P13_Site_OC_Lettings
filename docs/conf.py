@@ -27,7 +27,7 @@ language = 'fr'
 # html_theme = 'alabaster'
 html_static_path = ['_static']
 
-html_logo = "_static/assets/img/logo.png"
+html_logo = "_static/logo.png"
 html_title = "Orange County Lettings"
 
 html_theme = "sphinx_rtd_theme"
