@@ -23,9 +23,16 @@ jobs:
           python3 -m pip install -r requirements.txt
           python3 -m pip install flake8 coverage
 
+      - name: Debug environment
+        run: |
+          which python
+          python --version
+          python -m pip list
+          pip list
+
       - name: Run lint
         run: |
-          python3 -m flake8 .
+          flake8 .
 
       - name: Run tests with coverage
         run: |
