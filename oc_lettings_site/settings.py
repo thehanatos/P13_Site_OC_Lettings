@@ -44,7 +44,7 @@ if SENTRY_DSN:
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False  # add false to display custom 404.html and 500.html
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'p13-site-oc-lettings.onrender.com',]
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'p13-site-oc-lettings.onrender.com']
 
 # Application definition
 
@@ -142,7 +142,7 @@ USE_TZ = True
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [BASE_DIR / "static",]
+STATICFILES_DIRS = [BASE_DIR / "static"]
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
