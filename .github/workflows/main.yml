@@ -26,8 +26,6 @@ jobs:
       - name: Debug environment
         run: |
           which python
-          python --version
-          python -m pip list
           pip list
 
       - name: Run lint
@@ -36,8 +34,9 @@ jobs:
 
       - name: Run tests with coverage
         run: |
-          coverage run manage.py test
-          coverage report
+          coverage erase
+          coverage run -m pytest
+          coverage report -m
           coverage html
           coverage json
 
