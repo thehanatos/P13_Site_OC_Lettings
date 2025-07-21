@@ -136,6 +136,8 @@ Remplacer `which <ma-commande>` par :
 
 ## 🐳 Docker (en local)
 
+Docker permet d'exécuter l'application dans un conteneur isolé, assurant une cohérence parfaite entre les environnements de développement, de test et de production. Cela élimine les problèmes liés aux différences de configuration système ou de dépendances.
+
 ### ⚙️ Build et Run de l’image
 
 ```bash
